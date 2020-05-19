@@ -1,4 +1,4 @@
-package com.sap.ibso.hackathon.booker;
+package com.sap.ibso.hackathon.booker.function;
 
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.HttpMethod;
@@ -8,26 +8,27 @@ import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.sap.ibso.hackathon.booker.model.Greeting;
-import com.sap.ibso.hackathon.booker.model.User;
+import com.sap.ibso.hackathon.booker.jpa.model.Location;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
-public class BookerCRUD extends AzureSpringBootRequestHandler<User, Greeting> {
+public class PostLocations extends AzureSpringBootRequestHandler<List<Location>, List<Location>> {
 
-    @FunctionName("hello")
-    public HttpResponseMessage execute(
-            @HttpTrigger(name = "request", methods = {HttpMethod.GET, HttpMethod.POST},
-                    authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<User>> request,
+    @FunctionName("postLocations")
+    public HttpResponseMessage postLocations(
+            @HttpTrigger(name = "request", methods = {HttpMethod.POST}, route = "locations",
+                    authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<List<Location>>> request,
             ExecutionContext context) {
 
-        context.getLogger().info("Greeting user name: " + request.getBody().get().getName());
+        List<Location> emptyList = Collections.emptyList();
+        context.getLogger().info("post locations: " + request.getBody().orElse(emptyList));
         return request
                 .createResponseBuilder(HttpStatus.OK)
-                .body(handleRequest(request.getBody().get(), context))
+                .body(handleRequest(request.getBody().orElse(emptyList), context))
                 .header("Content-Type", "application/json")
                 .build();
     }
-
 }

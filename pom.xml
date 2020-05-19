@@ -44,6 +44,15 @@
 		<scope>provided</scope>
 	</dependency>
 	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>8.0.20</version>
+	</dependency>
+	<dependency>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-function-web</artifactId>
 		<scope>provided</scope>
@@ -205,7 +214,7 @@
 	</plugins>
 </build>
 
-<repositories>
+<!--<repositories>
 	<repository>
 		<id>spring-snapshots</id>
 		<name>Spring Snapshots</name>
@@ -262,5 +271,5 @@
 			<enabled>false</enabled>
 		</snapshots>
 	</pluginRepository>
-</pluginRepositories>
+</pluginRepositories>-->
 </project>
