@@ -24,7 +24,6 @@ public class LocationService {
     @Transactional(readOnly = true)
     public Page<Location> getAll(PageRequest pageRequest) {
         Pageable pageable = pageRequest.getPageable();
-        System.err.println(pageable);
         return locationRepository.findAll(pageable);
     }
 
