@@ -31,4 +31,10 @@ public class LocationService {
     public List<Location> createAll(List<Location> createLocationList) {
         return locationRepository.saveAll(createLocationList);
     }
+
+    public List<Location> deleteAll(List<UUID> deleteLocationIdList) {
+        List<Location> deleteLocationList = locationRepository.findAllById(deleteLocationIdList);
+        locationRepository.deleteInBatch(deleteLocationList);
+        return deleteLocationList;
+    }
 }

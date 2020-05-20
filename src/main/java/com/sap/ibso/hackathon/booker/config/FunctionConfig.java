@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Configuration
@@ -27,5 +28,10 @@ public class FunctionConfig {
     @Bean
     public Function<List<Location>, List<Location>> postLocations() {
         return createLocationList -> locationService.createAll(createLocationList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Location>> deleteLocations() {
+        return deleteLocationIdList -> locationService.deleteAll(deleteLocationIdList);
     }
 }
