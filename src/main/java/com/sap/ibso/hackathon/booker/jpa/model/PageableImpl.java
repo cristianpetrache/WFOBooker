@@ -33,7 +33,7 @@ public class PageableImpl implements Pageable {
 
     @Override
     public long getOffset() {
-        return pageRequest.getOffset();
+        return getPageSize() * getPageNumber();
     }
 
     @Override

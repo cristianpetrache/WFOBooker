@@ -12,13 +12,12 @@ import java.util.Map;
 @Data
 public class PageRequest implements Serializable {
 
-    private static final long serialVersionUID = 109826735609850011L;
-    private static final PageRequest First1K = new PageRequest(0, 1000, 0, Collections.emptyList());
+    private static final long serialVersionUID = 6535604995950533524L;
+    private static final PageRequest First1K = new PageRequest(0, 1000, Collections.emptyList());
     private static final Map<Integer, Pageable> PAGEABLE_CACHE = new HashMap<>();
 
     private final int pageNumber;
     private final int pageSize;
-    private final int offset;
     private final List<Sort> sortList;
 
     public static PageRequest getFirst1K() {
