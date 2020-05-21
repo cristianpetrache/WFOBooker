@@ -10,12 +10,14 @@ import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.sap.ibso.hackathon.booker.jpa.model.Location;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Validated
 public class DeleteLocations extends AzureSpringBootRequestHandler<List<UUID>, List<Location>> {
 
     @FunctionName("deleteLocations")

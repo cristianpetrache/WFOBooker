@@ -12,9 +12,11 @@ import com.sap.ibso.hackathon.booker.jpa.model.Building;
 import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.Optional;
 
+@Validated
 public class GetBuildings extends AzureSpringBootRequestHandler<PageRequest, Page<Building>> {
 
     @FunctionName("getBuildings")

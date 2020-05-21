@@ -16,10 +16,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Validated
 public class PostBuildings extends AzureSpringBootRequestHandler<List<Building>, List<Building>> {
 
     @FunctionName("postBuildings")
-    @Validated
     public HttpResponseMessage postBuildings(
             @HttpTrigger(name = "request", methods = {HttpMethod.POST}, route = "buildings",
                     authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<List<Building>>> request,

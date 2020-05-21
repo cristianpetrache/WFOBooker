@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.UUID;
 
@@ -14,8 +14,7 @@ import java.util.UUID;
 @Entity
 public class Building extends UUIDEntity {
 
-    @NotBlank
-    @Pattern(regexp = "[0-9abcde]{8}-[0-9abcde]{4}-[0-9abcde]{4}-[0-9abcde]{4}-[0-9abcde]{12}")
+    @NotNull
     @Column(name = "location_id", columnDefinition = "CHAR(36)", nullable = false)
     @Type(type = "uuid-char")
     private UUID locationId;
