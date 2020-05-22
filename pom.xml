@@ -28,7 +28,7 @@
 	<functionAppRegion>westeurope</functionAppRegion>
 	<subscriptionId>87f340d1-d381-43ec-8e4c-f288c3cf221e</subscriptionId>
 	<stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
-	<functionResourceGroup>petrut_learning</functionResourceGroup>
+	<functionResourceGroup>MKServerlessArchitecture</functionResourceGroup>
 	<start-class>com.sap.ibso.hackathon.booker.WfoBookerApplication</start-class>
 	<spring.boot.wrapper.version>1.0.24.RELEASE</spring.boot.wrapper.version>
 </properties>
