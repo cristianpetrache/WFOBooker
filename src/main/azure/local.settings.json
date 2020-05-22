@@ -3,11 +3,6 @@
   "Values": {
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "java",
-    "AzureWebJobsDashboard": "",
-    "WFO_BOOKER_JDBC_URL": "jdbc:sqlserver://rvhserver.database.windows.net:1433;database=remotevshome;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
-    "WFO_BOOKER_DB_USERNAME": "rvhserver@rvhserver",
-    "WFO_BOOKER_DB_PASSWORD": "Password0!",
-    "WFO_BOOKER_DB_HBM_TO_DDL": "update",
-    "WFO_BOOKER_DB_SHOW_SQL":  true
+    "AzureWebJobsDashboard": ""
   }
 }
