@@ -7,22 +7,21 @@ import com.microsoft.azure.functions.HttpResponseMessage;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.sap.ibso.hackathon.booker.jpa.model.Location;
+import com.sap.ibso.hackathon.booker.jpa.model.Seat;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Validated
-public class DeleteLocations extends DeleteBookerEntities<Location> {
+public class PostSeats extends PostBookerEntities<Seat> {
 
-    @FunctionName("deleteLocations")
-    public HttpResponseMessage deleteLocations(
-            @HttpTrigger(name = "request", methods = {HttpMethod.DELETE}, route = "locations",
-                    authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<List<UUID>>> request,
+    @FunctionName("postSeats")
+    public HttpResponseMessage postSeats(
+            @HttpTrigger(name = "request", methods = {HttpMethod.POST}, route = "seats",
+                    authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<List<Seat>>> request,
             ExecutionContext context) {
 
-        return deleteEntities(request, context);
+        return postEntities(request, context);
     }
 }

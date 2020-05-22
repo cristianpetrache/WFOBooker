@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "ed1b3749-8101-47fb-87fe-a1a411562ef2",
+		"name": "WFOBooker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Locations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Locations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Bucharest\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025\n    },\n    {\n        \"name\": \"Galway\",\n        \"latitude\": 53.2707,\n        \"longitude\": -9.0568\n    },\n    {\n        \"name\": \"New Delhi\",\n        \"latitude\": 28.6139,\n        \"longitude\": 77.2090\n    },\n    {\n        \"name\": \"Bengaluru\",\n        \"latitude\": 12.9716,\n        \"longitude\": 77.5946\n    },\n    {\n        \"name\": \"Waldorf\",\n        \"latitude\": 49.3064,\n        \"longitude\": 8.6428\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Locations",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"locationId1\",\n    \"locationId2\",\n    \"locationId3\",\n    \"locationId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Buildings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/buildings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"buildings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Buildings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Bucharest Building 1\",\n        \"code\": \"BUH_B1\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025,\n        \"locationId\": \"locationId\"\n        \n    },\n    {\n        \"name\": \"Bucharest Building 2\",\n        \"code\": \"BUH_B2\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025,\n        \"locationId\": \"locationId\"\n        \n    },\n    {\n        \"name\": \"Bucharest Building 3\",\n        \"code\": \"BUH_B3\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025,\n        \"locationId\": \"locationId\"\n        \n    },\n    {\n        \"name\": \"Bucharest Building 4\",\n        \"code\": \"BUH_B4\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025,\n        \"locationId\": \"locationId\"\n        \n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/buildings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"buildings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Buildings",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"locationId1\",\n    \"locationId2\",\n    \"locationId3\",\n    \"locationId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/buildings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"buildings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Floors",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/floors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"floors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Floors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Floor 1\",\n        \"buildingId\": \"buildingId\"\n        \n    },\n    {\n        \"name\": \"Floor 2\",\n        \"buildingId\": \"buildingId\"\n        \n    },\n    {\n        \"name\": \"Floor 3\",\n        \"buildingId\": \"buildingId\"\n        \n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/floors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"floors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Floors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"floorId1\",\n    \"floorId2\",\n    \"floorId3\",\n    \"floorId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/floors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"floors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Seats",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"code\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/seats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"seats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Seats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"code\": \"BUB1F1_1\",\n        \"floorId\": \"floorId\"\n        \n    },\n    {\n        \"code\": \"BUB1F1_2\",\n        \"floorId\": \"floorId\"\n        \n    },\n    {\n        \"code\": \"BUB1F1_3\",\n        \"floorId\": \"floorId\"\n        \n    },\n    {\n        \"code\": \"BUB1F1_4\",\n        \"floorId\": \"floorId\"\n        \n    },\n    {\n        \"code\": \"BUB1F1_5\",\n        \"floorId\": \"floorId\"\n        \n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/seats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"seats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Seats",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"seatId1\",\n    \"seatId2\",\n    \"seatId3\",\n    \"seatId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/seats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"seats"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
