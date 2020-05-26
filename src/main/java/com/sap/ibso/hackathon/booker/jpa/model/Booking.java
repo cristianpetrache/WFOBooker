@@ -23,6 +23,7 @@ public class Booking extends UUIDEntity {
     @Type(type = "uuid-char")
     private UUID seatId;
     @NotNull
+    @Column(nullable = false)
     private Date date;
     @Size(max = 250)
     @Column(length = 250)
