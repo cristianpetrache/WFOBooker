@@ -23,12 +23,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/locations",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/locations",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"locations"
@@ -52,12 +52,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/locations",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/locations",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"locations"
@@ -81,12 +81,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/locations",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/locations",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"locations"
@@ -113,12 +113,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/buildings",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/buildings",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"buildings"
@@ -142,12 +142,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/buildings",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/buildings",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"buildings"
@@ -171,12 +171,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/buildings",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/buildings",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"buildings"
@@ -203,12 +203,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/floors",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/floors",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"floors"
@@ -232,12 +232,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/floors",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/floors",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"floors"
@@ -261,12 +261,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/floors",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/floors",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"floors"
@@ -293,12 +293,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/seats",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/seats",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"seats"
@@ -322,12 +322,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/seats",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/seats",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"seats"
@@ -351,15 +351,195 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/seats",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/seats",
+					"protocol": "{{protocol}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "7071",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"seats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/employees",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"code\": \"i000001\",\n        \"name\": \"user one\",\n        \"email\": \"user1@sap.com\"\n    },\n    {\n        \"code\": \"i000002\",\n        \"name\": \"user two\",\n        \"email\": \"user2@sap.com\"\n    },\n    {\n        \"code\": \"i000003\",\n        \"name\": \"user three\",\n        \"email\": \"user3@sap.com\"\n    },\n    {\n        \"code\": \"i000004\",\n        \"name\": \"user four\",\n        \"email\": \"user4@sap.com\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/employees",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employees",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"employee1\",\n    \"employee2\",\n    \"employee3\",\n    \"employee4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/employees",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"date\",\n            \"direction\": \"DESC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/bookings",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Bookings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"employeeId\": \"employeeId\",\n        \"seatId\": \"seatId\",\n        \"date\": \"2020-01-20\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"seatId\": \"seatId\",\n        \"date\": \"2020-01-21\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"seatId\": \"seatId\",\n        \"date\": \"2020-01-22\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"seatId\": \"seatId\",\n        \"date\": \"2020-01-23\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"seatId\": \"seatId\",\n        \"date\": \"2020-01-24\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/bookings",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Bookings",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"bookingId1\",\n    \"bookingId2\",\n    \"bookingId\",\n    \"bookingId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/bookings",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"bookings"
 					]
 				}
 			},
