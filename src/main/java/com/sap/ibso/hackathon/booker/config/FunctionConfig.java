@@ -2,12 +2,14 @@ package com.sap.ibso.hackathon.booker.config;
 
 import com.sap.ibso.hackathon.booker.jpa.model.Booking;
 import com.sap.ibso.hackathon.booker.jpa.model.Building;
+import com.sap.ibso.hackathon.booker.jpa.model.Employee;
 import com.sap.ibso.hackathon.booker.jpa.model.Floor;
 import com.sap.ibso.hackathon.booker.jpa.model.Location;
 import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
 import com.sap.ibso.hackathon.booker.service.BookingService;
 import com.sap.ibso.hackathon.booker.service.BuildingService;
+import com.sap.ibso.hackathon.booker.service.EmployeeService;
 import com.sap.ibso.hackathon.booker.service.FloorService;
 import com.sap.ibso.hackathon.booker.service.LocationService;
 import com.sap.ibso.hackathon.booker.service.SeatService;
@@ -27,15 +29,18 @@ public class FunctionConfig {
     private SeatService seatService;
     private FloorService floorService;
     private BookingService bookingService;
+    private EmployeeService employeeService;
 
     public FunctionConfig(LocationService locationService,
                           BuildingService buildingService, SeatService seatService,
-                          FloorService floorService, BookingService bookingService) {
+                          FloorService floorService, BookingService bookingService,
+                          EmployeeService employeeService) {
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.seatService = seatService;
         this.floorService = floorService;
         this.bookingService = bookingService;
+        this.employeeService = employeeService;
     }
 
     @Bean
@@ -111,5 +116,20 @@ public class FunctionConfig {
     @Bean
     public Function<List<UUID>, List<Booking>> deleteBookings() {
         return deleteBookingIdList -> bookingService.deleteAll(deleteBookingIdList);
+    }
+
+    @Bean
+    public Function<PageRequest, Page<Employee>> getEmployees() {
+        return pageRequest -> employeeService.getAll(pageRequest);
+    }
+
+    @Bean
+    public Function<List<Employee>, List<Employee>> postEmployees() {
+        return createEmployeeList -> employeeService.createAll(createEmployeeList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Employee>> deleteEmployees() {
+        return deleteEmployeeIdList -> employeeService.deleteAll(deleteEmployeeIdList);
     }
 }
