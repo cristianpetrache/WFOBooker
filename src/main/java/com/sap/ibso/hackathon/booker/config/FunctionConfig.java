@@ -1,10 +1,12 @@
 package com.sap.ibso.hackathon.booker.config;
 
+import com.sap.ibso.hackathon.booker.jpa.model.Booking;
 import com.sap.ibso.hackathon.booker.jpa.model.Building;
 import com.sap.ibso.hackathon.booker.jpa.model.Floor;
 import com.sap.ibso.hackathon.booker.jpa.model.Location;
 import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
+import com.sap.ibso.hackathon.booker.service.BookingService;
 import com.sap.ibso.hackathon.booker.service.BuildingService;
 import com.sap.ibso.hackathon.booker.service.FloorService;
 import com.sap.ibso.hackathon.booker.service.LocationService;
@@ -24,14 +26,16 @@ public class FunctionConfig {
     private BuildingService buildingService;
     private SeatService seatService;
     private FloorService floorService;
+    private BookingService bookingService;
 
     public FunctionConfig(LocationService locationService,
                           BuildingService buildingService, SeatService seatService,
-                          FloorService floorService) {
+                          FloorService floorService, BookingService bookingService) {
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.seatService = seatService;
         this.floorService = floorService;
+        this.bookingService = bookingService;
     }
 
     @Bean
@@ -92,5 +96,20 @@ public class FunctionConfig {
     @Bean
     public Function<List<UUID>, List<Seat>> deleteSeats() {
         return deleteSeatIdList -> seatService.deleteAll(deleteSeatIdList);
+    }
+
+    @Bean
+    public Function<PageRequest, Page<Booking>> getBookings() {
+        return pageRequest -> bookingService.getAll(pageRequest);
+    }
+
+    @Bean
+    public Function<List<Booking>, List<Booking>> postBookings() {
+        return createBookingList -> bookingService.createAll(createBookingList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Booking>> deleteBookings() {
+        return deleteBookingIdList -> bookingService.deleteAll(deleteBookingIdList);
     }
 }

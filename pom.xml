@@ -145,7 +145,7 @@
 					</property>
 					<property>
 						<name>MAIN_CLASS</name>
-						<value>com.example.HelloFunction</value>
+						<value>${start-class}</value>
 					</property>
 				</appSettings>
 			</configuration>
