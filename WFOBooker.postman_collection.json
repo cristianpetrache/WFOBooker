@@ -404,7 +404,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n    {\n        \"code\": \"i000001\",\n        \"name\": \"user one\",\n        \"email\": \"user1@sap.com\"\n    },\n    {\n        \"code\": \"i000002\",\n        \"name\": \"user two\",\n        \"email\": \"user2@sap.com\"\n    },\n    {\n        \"code\": \"i000003\",\n        \"name\": \"user three\",\n        \"email\": \"user3@sap.com\"\n    },\n    {\n        \"code\": \"i000004\",\n        \"name\": \"user four\",\n        \"email\": \"user4@sap.com\"\n    }\n]",
+					"raw": "[\n    {\n        \"code\": \"I000001\",\n        \"name\": \"user one\",\n        \"email\": \"user1@sap.com\"\n    },\n    {\n        \"code\": \"I000002\",\n        \"name\": \"user two\",\n        \"email\": \"user2@sap.com\"\n    },\n    {\n        \"code\": \"I000003\",\n        \"name\": \"user three\",\n        \"email\": \"user3@sap.com\"\n    },\n    {\n        \"code\": \"I000004\",\n        \"name\": \"user four\",\n        \"email\": \"user4@sap.com\"\n    }\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -540,6 +540,49 @@
 					"path": [
 						"api",
 						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"date\",\n            \"direction\": \"DESC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/userBookings/I000001?startDate=2020-05-25&endDate=2021-01-02",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"userBookings",
+						"I000001"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-05-25"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-01-02"
+						}
 					]
 				}
 			},
