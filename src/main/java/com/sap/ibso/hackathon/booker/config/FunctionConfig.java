@@ -1,5 +1,7 @@
 package com.sap.ibso.hackathon.booker.config;
 
+import com.sap.ibso.hackathon.booker.dto.UserBookingDto;
+import com.sap.ibso.hackathon.booker.dto.UserBookingRequestDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Booking;
 import com.sap.ibso.hackathon.booker.jpa.model.Building;
 import com.sap.ibso.hackathon.booker.jpa.model.Employee;
@@ -13,6 +15,7 @@ import com.sap.ibso.hackathon.booker.service.EmployeeService;
 import com.sap.ibso.hackathon.booker.service.FloorService;
 import com.sap.ibso.hackathon.booker.service.LocationService;
 import com.sap.ibso.hackathon.booker.service.SeatService;
+import com.sap.ibso.hackathon.booker.service.UserBookingService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
@@ -30,17 +33,20 @@ public class FunctionConfig {
     private FloorService floorService;
     private BookingService bookingService;
     private EmployeeService employeeService;
+    private UserBookingService userBookingService;
 
     public FunctionConfig(LocationService locationService,
                           BuildingService buildingService, SeatService seatService,
                           FloorService floorService, BookingService bookingService,
-                          EmployeeService employeeService) {
+                          EmployeeService employeeService,
+                          UserBookingService userBookingService) {
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.seatService = seatService;
         this.floorService = floorService;
         this.bookingService = bookingService;
         this.employeeService = employeeService;
+        this.userBookingService = userBookingService;
     }
 
     @Bean
@@ -131,5 +137,10 @@ public class FunctionConfig {
     @Bean
     public Function<List<UUID>, List<Employee>> deleteEmployees() {
         return deleteEmployeeIdList -> employeeService.deleteAll(deleteEmployeeIdList);
+    }
+
+    @Bean
+    public Function<UserBookingRequestDto, UserBookingDto> getUserBookings() {
+        return userBookingService::getUserBooking;
     }
 }

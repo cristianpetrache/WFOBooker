@@ -1,15 +1,22 @@
 package com.sap.ibso.hackathon.booker.service;
 
 import com.sap.ibso.hackathon.booker.jpa.model.Floor;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.sap.ibso.hackathon.booker.jpa.repo.FloorRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 public class FloorService extends BookerEntityService<Floor> {
 
-    public FloorService(JpaRepository<Floor, UUID> floorRepository) {
+    private FloorRepository floorRepository;
+
+    public FloorService(FloorRepository floorRepository) {
         super(floorRepository);
+        this.floorRepository = floorRepository;
+    }
+
+    public Optional<Floor> findOptionalFirstById() {
+        return floorRepository.findFirstByOrderByIdAsc();
     }
 }
