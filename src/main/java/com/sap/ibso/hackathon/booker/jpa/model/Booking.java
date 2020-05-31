@@ -19,7 +19,7 @@ public class Booking extends UUIDEntity {
     @Type(type = "uuid-char")
     private UUID employeeId;
     @NotNull
-    @Column(name = "seat_d", columnDefinition = "CHAR(36)", nullable = false)
+    @Column(name = "seat_id", columnDefinition = "CHAR(36)", nullable = false)
     @Type(type = "uuid-char")
     private UUID seatId;
     @NotNull

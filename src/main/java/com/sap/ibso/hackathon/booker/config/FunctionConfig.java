@@ -1,25 +1,32 @@
 package com.sap.ibso.hackathon.booker.config;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Function;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
+
 import com.sap.ibso.hackathon.booker.jpa.model.Booking;
 import com.sap.ibso.hackathon.booker.jpa.model.Building;
 import com.sap.ibso.hackathon.booker.jpa.model.Employee;
 import com.sap.ibso.hackathon.booker.jpa.model.Floor;
 import com.sap.ibso.hackathon.booker.jpa.model.Location;
+import com.sap.ibso.hackathon.booker.jpa.model.Manager;
 import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
+import com.sap.ibso.hackathon.booker.jpa.model.Preference;
+import com.sap.ibso.hackathon.booker.jpa.model.Restriction;
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
 import com.sap.ibso.hackathon.booker.service.BookingService;
 import com.sap.ibso.hackathon.booker.service.BuildingService;
 import com.sap.ibso.hackathon.booker.service.EmployeeService;
 import com.sap.ibso.hackathon.booker.service.FloorService;
 import com.sap.ibso.hackathon.booker.service.LocationService;
+import com.sap.ibso.hackathon.booker.service.ManagerService;
+import com.sap.ibso.hackathon.booker.service.PreferenceService;
+import com.sap.ibso.hackathon.booker.service.RestrictionService;
 import com.sap.ibso.hackathon.booker.service.SeatService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.domain.Page;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Function;
 
 @Configuration
 public class FunctionConfig {
@@ -30,18 +37,23 @@ public class FunctionConfig {
     private FloorService floorService;
     private BookingService bookingService;
     private EmployeeService employeeService;
+    private RestrictionService restrictionService;
+    private PreferenceService preferenceService;
+    private ManagerService managerService;
 
-    public FunctionConfig(LocationService locationService,
-                          BuildingService buildingService, SeatService seatService,
-                          FloorService floorService, BookingService bookingService,
-                          EmployeeService employeeService) {
-        this.locationService = locationService;
-        this.buildingService = buildingService;
-        this.seatService = seatService;
-        this.floorService = floorService;
-        this.bookingService = bookingService;
-        this.employeeService = employeeService;
-    }
+	public FunctionConfig(LocationService locationService, BuildingService buildingService, SeatService seatService,
+			FloorService floorService, BookingService bookingService, EmployeeService employeeService,
+			RestrictionService restrictionService, PreferenceService preferenceService, ManagerService managerService) {
+		this.locationService = locationService;
+		this.buildingService = buildingService;
+		this.seatService = seatService;
+		this.floorService = floorService;
+		this.bookingService = bookingService;
+		this.employeeService = employeeService;
+		this.restrictionService = restrictionService;
+		this.preferenceService = preferenceService;
+		this.managerService = managerService;
+	}
 
     @Bean
     public Function<PageRequest, Page<Location>> getLocations() {
@@ -131,5 +143,50 @@ public class FunctionConfig {
     @Bean
     public Function<List<UUID>, List<Employee>> deleteEmployees() {
         return deleteEmployeeIdList -> employeeService.deleteAll(deleteEmployeeIdList);
+    }
+    
+    @Bean
+    public Function<PageRequest, Page<Restriction>> getRestrictions() {
+      return pageRequest -> restrictionService.getAll(pageRequest);
+    }
+
+    @Bean
+    public Function<List<Restriction>, List<Restriction>> postRestrictions() {
+      return createRestrictionList -> restrictionService.createAll(createRestrictionList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Restriction>> deleteRestrictions() {
+      return deleteRestrictionIdList -> restrictionService.deleteAll(deleteRestrictionIdList);
+    }
+
+    @Bean
+    public Function<PageRequest, Page<Preference>> getPreferences() {
+      return pageRequest -> preferenceService.getAll(pageRequest);
+    }
+
+    @Bean
+    public Function<List<Preference>, List<Preference>> postPreferences() {
+      return createPreferenceList -> preferenceService.createAll(createPreferenceList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Preference>> deletePreferences() {
+      return deletePreferenceIdList -> preferenceService.deleteAll(deletePreferenceIdList);
+    }
+
+    @Bean
+    public Function<PageRequest, Page<Manager>> getManagers() {
+      return pageRequest -> managerService.getAll(pageRequest);
+    }
+
+    @Bean
+    public Function<List<Manager>, List<Manager>> postManagers() {
+      return createManagerList -> managerService.createAll(createManagerList);
+    }
+
+    @Bean
+    public Function<List<UUID>, List<Manager>> deleteManagers() {
+      return deleteManagerIdList -> managerService.deleteAll(deleteManagerIdList);
     }
 }
