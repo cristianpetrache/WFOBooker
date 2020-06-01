@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ed1b3749-8101-47fb-87fe-a1a411562ef2",
+		"_postman_id": "dfc26c18-4f4b-4390-9a5d-ae7d2dda8ea5",
 		"name": "WFOBooker",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -583,6 +583,276 @@
 							"key": "endDate",
 							"value": "2021-01-02"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Restrictions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/restrictions",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"restrictions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Restrictions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"type\": \"0\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\"\n    },\n    {\n        \"type\": \"7\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\"\n    },\n    {\n        \"type\": \"p\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-06-15\",\n        \"entityType\": \"E\",\n        \"entityId\": \"employeeId\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/restrictions",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"restrictions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Restrictions",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"restrictionId1\",\n    \"restrictionId2\",\n    \"restrictionId3\",\n    \"restrictionId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/restrictions",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"restrictions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Preferences",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/preferences",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"preferences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Preferences",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"B\",\n        \"entityId\": \"buildingId\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"F\",\n        \"entityId\": \"floorId\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"S\",\n        \"entityId\": \"seatId\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/preferences",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"preferences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Preferences",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"preferenceId1\",\n    \"preferenceId2\",\n    \"preferenceId3\",\n    \"preferenceId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/preferences",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"preferences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Managers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/managers",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Managers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"E\",\n        \"entityId\": \"entityId\"\n    },\n    {\n        \"employeeId\": \"employeeId\",\n        \"entityType\": \"L\",\n        \"entityId\": \"entityId\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/managers",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Managers",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"managerId1\",\n    \"managerId2\",\n    \"managerId3\",\n    \"managerId4\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/managers",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"managers"
 					]
 				}
 			},
