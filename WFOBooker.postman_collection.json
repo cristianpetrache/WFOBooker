@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dfc26c18-4f4b-4390-9a5d-ae7d2dda8ea5",
+		"_postman_id": "6faf61c1-40dd-4b21-ab8a-fd76909a0bb0",
 		"name": "WFOBooker",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -404,7 +404,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n    {\n        \"code\": \"i000001\",\n        \"name\": \"user one\",\n        \"email\": \"user1@sap.com\"\n    },\n    {\n        \"code\": \"i000002\",\n        \"name\": \"user two\",\n        \"email\": \"user2@sap.com\"\n    },\n    {\n        \"code\": \"i000003\",\n        \"name\": \"user three\",\n        \"email\": \"user3@sap.com\"\n    },\n    {\n        \"code\": \"i000004\",\n        \"name\": \"user four\",\n        \"email\": \"user4@sap.com\"\n    }\n]",
+					"raw": "[\n    {\n        \"code\": \"I000001\",\n        \"name\": \"user one\",\n        \"email\": \"user1@sap.com\"\n    },\n    {\n        \"code\": \"I000002\",\n        \"name\": \"user two\",\n        \"email\": \"user2@sap.com\"\n    },\n    {\n        \"code\": \"I000003\",\n        \"name\": \"user three\",\n        \"email\": \"user3@sap.com\"\n    },\n    {\n        \"code\": \"I000004\",\n        \"name\": \"user four\",\n        \"email\": \"user4@sap.com\"\n    }\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -555,7 +555,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"startDate\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityType\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -645,7 +645,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"entityType\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -735,7 +735,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"employeeId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -810,6 +810,49 @@
 					"path": [
 						"api",
 						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"date\",\n            \"direction\": \"DESC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/userBookings/I000001?startDate=2020-05-25&endDate=2021-01-02",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"userBookings",
+						"I000001"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-05-25"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-01-02"
+						}
 					]
 				}
 			},

@@ -1,16 +1,22 @@
 package com.sap.ibso.hackathon.booker.service;
 
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.sap.ibso.hackathon.booker.jpa.repo.SeatRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 public class SeatService extends BookerEntityService<Seat> {
 
-    public SeatService(JpaRepository<Seat, UUID> seatRepository) {
+    private SeatRepository seatRepository;
+
+    public SeatService(SeatRepository seatRepository) {
         super(seatRepository);
+        this.seatRepository = seatRepository;
+    }
+
+    public Optional<Seat> findOptionalFirstById() {
+        return seatRepository.findFirstByOrderByIdAsc();
     }
 }
