@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dfc26c18-4f4b-4390-9a5d-ae7d2dda8ea5",
+		"_postman_id": "6faf61c1-40dd-4b21-ab8a-fd76909a0bb0",
 		"name": "WFOBooker",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -546,49 +546,6 @@
 			"response": []
 		},
 		{
-			"name": "Get User Bookings",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"date\",\n            \"direction\": \"DESC\"\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{protocol}}://{{host}}:{{port}}/api/userBookings/I000001?startDate=2020-05-25&endDate=2021-01-02",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"userBookings",
-						"I000001"
-					],
-					"query": [
-						{
-							"key": "startDate",
-							"value": "2020-05-25"
-						},
-						{
-							"key": "endDate",
-							"value": "2021-01-02"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get Restrictions",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -598,7 +555,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"startDate\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityType\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -688,7 +645,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"entityType\",\n            \"direction\": \"ASC\"\n        },\n        {\n            \"field\": \"entityId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -778,7 +735,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"name\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"employeeId\",\n            \"direction\": \"ASC\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -853,6 +810,49 @@
 					"path": [
 						"api",
 						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 1000,\n    \"sortList\": [\n        {\n            \"field\": \"date\",\n            \"direction\": \"DESC\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{host}}:{{port}}/api/userBookings/I000001?startDate=2020-05-25&endDate=2021-01-02",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"userBookings",
+						"I000001"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-05-25"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-01-02"
+						}
 					]
 				}
 			},
