@@ -1,13 +1,11 @@
 package com.sap.ibso.hackathon.booker.service;
 
 import com.sap.ibso.hackathon.booker.dto.BookingDto;
-import com.sap.ibso.hackathon.booker.dto.PreferenceDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingRequestDto;
 import com.sap.ibso.hackathon.booker.exception.UUIDEntityNotFoundException;
 import com.sap.ibso.hackathon.booker.jpa.model.Employee;
-import com.sap.ibso.hackathon.booker.jpa.model.Floor;
-import com.sap.ibso.hackathon.booker.jpa.model.Seat;
+import com.sap.ibso.hackathon.booker.jpa.model.Preference;
 import com.sap.ibso.hackathon.booker.mapper.BookingMapper;
 import com.sap.ibso.hackathon.booker.mapper.DateMapper;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -24,7 +20,7 @@ import java.util.stream.Collectors;
 public class UserBookingService {
 
     // 28 days, four weeks, ~1 month
-    private static final int MAX_DELTA_IN_MILLISECONDS = 1000 * 60 * 60 * 24 * 28;
+    private static final long MAX_DELTA_IN_MILLISECONDS = 1L * 1000 * 60 * 60 * 24 * 30;
 
     private EmployeeService employeeService;
     private BookingService bookingService;
@@ -32,23 +28,29 @@ public class UserBookingService {
     private BuildingService buildingService;
     private FloorService floorService;
     private SeatService seatService;
+    private PreferenceService preferenceService;
     private BookingMapper bookingMapper;
     private DateMapper dateMapper;
+    private ExecutionContextHolderService executionContextHolderService;
 
     public UserBookingService(EmployeeService employeeService,
                               BookingService bookingService,
                               LocationService locationService,
                               BuildingService buildingService,
                               FloorService floorService, SeatService seatService,
-                              BookingMapper bookingMapper, DateMapper dateMapper) {
+                              PreferenceService preferenceService,
+                              BookingMapper bookingMapper, DateMapper dateMapper,
+                              ExecutionContextHolderService executionContextHolderService) {
         this.employeeService = employeeService;
         this.bookingService = bookingService;
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.floorService = floorService;
         this.seatService = seatService;
+        this.preferenceService = preferenceService;
         this.bookingMapper = bookingMapper;
         this.dateMapper = dateMapper;
+        this.executionContextHolderService = executionContextHolderService;
     }
 
     public UserBookingDto getUserBooking(UserBookingRequestDto userBookingRequestDto) {
@@ -56,17 +58,21 @@ public class UserBookingService {
                                            .orElseThrow(() -> new UUIDEntityNotFoundException(Employee.class));
         Date startDate = getStartDate(userBookingRequestDto.getStartDate());
         Date endDate = getEndDate(startDate, userBookingRequestDto.getEndDate());
+        executionContextHolderService.getExecutionContext().getLogger().info(
+                "com.sap.ibso.hackathon.booker.service.UserBookingService.getUserBooking - setting start date to '" +
+                        startDate + "' and end date to '" + endDate + "'");
         Set<BookingDto> bookingSet = bookingService
                 .getBookingsByEmployeeIdStartDateAndEndDate(employee.getId(), startDate, endDate)
                 .stream()
                 .map(bookingMapper::mapYtoZ)
                 .collect(Collectors.toSet());
+        Set<Preference> preferenceSet = preferenceService.findByEmployeeId(employee.getId());
         return UserBookingDto.builder()
                              .code(employee.getCode())
                              .name(employee.getName())
-                             .preferences(getMockPreferences())
+                             .preferences(preferenceSet)
                              .reservations(bookingSet)
-                             .teamReservations(getMockTeamReservations())
+                             .teamReservations(getTeamReservations())
                              .build();
     }
 
@@ -110,22 +116,8 @@ public class UserBookingService {
         return calendar.getTime();
     }
 
-    private Set<UserBookingDto> getMockTeamReservations() {
+    private Set<UserBookingDto> getTeamReservations() {
+        //TODO implement the team reservations logic
         return Collections.emptySet();
-    }
-
-    private Set<PreferenceDto> getMockPreferences() {
-        Set<PreferenceDto> preferenceDtoSet = new HashSet<>();
-        Optional<Seat> seatOptional = seatService.findOptionalFirstById();
-        if (seatOptional.isPresent()) {
-            preferenceDtoSet.add(PreferenceDto.builder().type(PreferenceDto.PreferenceType.SEAT)
-                                              .entityId(seatOptional.get().getId()).build());
-        }
-        Optional<Floor> floorOptional = floorService.findOptionalFirstById();
-        if (floorOptional.isPresent()) {
-            preferenceDtoSet.add(PreferenceDto.builder().type(PreferenceDto.PreferenceType.FLOOR)
-                                              .entityId(floorOptional.get().getId()).build());
-        }
-        return preferenceDtoSet;
     }
 }
