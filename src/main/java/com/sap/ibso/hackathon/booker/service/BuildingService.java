@@ -1,15 +1,26 @@
 package com.sap.ibso.hackathon.booker.service;
 
-import com.sap.ibso.hackathon.booker.jpa.model.Building;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import com.sap.ibso.hackathon.booker.jpa.model.Building;
+import com.sap.ibso.hackathon.booker.jpa.repo.BuildingRepository;
 
 @Service
 public class BuildingService extends BookerEntityService<Building> {
 
-    public BuildingService(JpaRepository<Building, UUID> buildingRepository) {
-        super(buildingRepository);
-    }
+	private BuildingRepository buildingRepository;
+
+	public BuildingService(BuildingRepository buildingRepository) {
+		super(buildingRepository);
+		this.buildingRepository = buildingRepository;
+	}
+
+	public ArrayList<Building> getBuildingsByLocation(UUID locationId) {
+		return buildingRepository.findById(locationId).map(Arrays::asList).map(ArrayList::new)
+				.orElseGet(ArrayList::new);
+	}
 }
