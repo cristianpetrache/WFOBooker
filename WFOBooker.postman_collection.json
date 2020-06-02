@@ -584,7 +584,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n    {\n        \"type\": \"0\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\"\n    },\n    {\n        \"type\": \"7\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\"\n    },\n    {\n        \"type\": \"p\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-06-15\",\n        \"entityType\": \"E\",\n        \"entityId\": \"employeeId\"\n    }\n]",
+					"raw": "[\n    {\n        \"type\": \"0\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\",\n        \"comments\": \"comments\"\n    },\n    {\n        \"type\": \"7\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-12-31\",\n        \"entityType\": \"L\",\n        \"entityId\": \"locationId\",\n        \"comments\": \"comments\"\n    },\n    {\n        \"type\": \"0\",\n        \"startDate\": \"2020-06-01\",\n        \"endDate\": \"2020-06-15\",\n        \"entityType\": \"E\",\n        \"entityId\": \"employeeId\",\n        \"comments\": \"comments\"\n    }\n]",
 					"options": {
 						"raw": {
 							"language": "json"

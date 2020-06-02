@@ -5,6 +5,7 @@ import com.sap.ibso.hackathon.booker.jpa.repo.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class EmployeeService extends BookerEntityService<Employee> {
@@ -16,7 +17,11 @@ public class EmployeeService extends BookerEntityService<Employee> {
         this.employeeRepository = employeeRepository;
     }
 
-    public Optional<Employee> getEmployeeByCode(String employeeCode) {
+    public Optional<Employee> findOptionalByCode(String employeeCode) {
         return employeeRepository.findOptionalByCode(employeeCode);
+    }
+
+    public Optional<Employee> findOptionalById(UUID id) {
+        return employeeRepository.findById(id);
     }
 }
