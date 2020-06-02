@@ -14,6 +14,7 @@ import com.sap.ibso.hackathon.booker.dto.UserBookingDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingRequestDto;
 import com.sap.ibso.hackathon.booker.exception.UUIDEntityNotFoundException;
 import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
+import com.sap.ibso.hackathon.booker.service.ExecutionContextHolderService;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.validation.annotation.Validated;
 
@@ -29,6 +30,7 @@ public class GetUserBookings extends AzureSpringBootRequestHandler<UserBookingRe
             @BindingName("userCode") String userCode,
             ExecutionContext context) {
 
+        ExecutionContextHolderService.getInstance().setExecutionContext(context);
         UserBookingDto userBookingDto = null;
         String startDate = request.getQueryParameters().get("startDate");
         String endDate = request.getQueryParameters().get("endDate");

@@ -34,13 +34,15 @@ public class UserBookingService {
     private SeatService seatService;
     private BookingMapper bookingMapper;
     private DateMapper dateMapper;
+    private ExecutionContextHolderService executionContextHolderService;
 
     public UserBookingService(EmployeeService employeeService,
                               BookingService bookingService,
                               LocationService locationService,
                               BuildingService buildingService,
                               FloorService floorService, SeatService seatService,
-                              BookingMapper bookingMapper, DateMapper dateMapper) {
+                              BookingMapper bookingMapper, DateMapper dateMapper,
+                              ExecutionContextHolderService executionContextHolderService) {
         this.employeeService = employeeService;
         this.bookingService = bookingService;
         this.locationService = locationService;
@@ -49,6 +51,7 @@ public class UserBookingService {
         this.seatService = seatService;
         this.bookingMapper = bookingMapper;
         this.dateMapper = dateMapper;
+        this.executionContextHolderService = executionContextHolderService;
     }
 
     public UserBookingDto getUserBooking(UserBookingRequestDto userBookingRequestDto) {
@@ -56,6 +59,9 @@ public class UserBookingService {
                                            .orElseThrow(() -> new UUIDEntityNotFoundException(Employee.class));
         Date startDate = getStartDate(userBookingRequestDto.getStartDate());
         Date endDate = getEndDate(startDate, userBookingRequestDto.getEndDate());
+        executionContextHolderService.getExecutionContext().getLogger().info(
+                "com.sap.ibso.hackathon.booker.service.UserBookingService.getUserBooking - setting start date to '" +
+                        startDate + "' and end date to '" + endDate + "'");
         Set<BookingDto> bookingSet = bookingService
                 .getBookingsByEmployeeIdStartDateAndEndDate(employee.getId(), startDate, endDate)
                 .stream()
