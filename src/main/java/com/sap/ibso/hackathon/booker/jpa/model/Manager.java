@@ -21,7 +21,7 @@ public class Manager extends UUIDEntity {
 
 	@NotNull
 	@Column(columnDefinition = "CHAR(1)", nullable = false)
-	private char entityType;
+	private String entityType;
 
 	@NotNull
 	@Column(columnDefinition = "CHAR(36)", nullable = false)
