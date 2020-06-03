@@ -9,6 +9,7 @@ import java.util.UUID;
 @Builder
 public class BookingDto {
 
+    private UUID id;
     private UUID seatId;
     private String date;
     private String comments;

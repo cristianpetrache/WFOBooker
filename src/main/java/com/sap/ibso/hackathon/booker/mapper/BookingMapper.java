@@ -16,6 +16,7 @@ public class BookingMapper implements Mapper<Booking, BookingDto> {
     @Override
     public Booking mapZtoY(BookingDto bookingDto) {
         Booking booking = new Booking();
+        booking.setId(bookingDto.getId());
         booking.setComments(bookingDto.getComments());
         booking.setDate(dateMapper.mapZtoY(bookingDto.getDate()));
         booking.setSeatId(bookingDto.getSeatId());
@@ -25,6 +26,7 @@ public class BookingMapper implements Mapper<Booking, BookingDto> {
     @Override
     public BookingDto mapYtoZ(Booking booking) {
         return BookingDto.builder()
+                         .id(booking.getId())
                          .comments(booking.getComments())
                          .date(dateMapper.mapYtoZ(booking.getDate()))
                          .seatId(booking.getSeatId())
