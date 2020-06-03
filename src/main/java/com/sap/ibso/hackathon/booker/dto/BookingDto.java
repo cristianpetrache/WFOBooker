@@ -13,4 +13,5 @@ public class BookingDto {
     private UUID seatId;
     private String date;
     private String comments;
+    private String locationText;
 }

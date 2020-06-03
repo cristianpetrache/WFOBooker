@@ -4,9 +4,13 @@ import com.sap.ibso.hackathon.booker.dto.BookingDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingRequestDto;
 import com.sap.ibso.hackathon.booker.exception.UUIDEntityNotFoundException;
+import com.sap.ibso.hackathon.booker.jpa.model.Building;
 import com.sap.ibso.hackathon.booker.jpa.model.Employee;
+import com.sap.ibso.hackathon.booker.jpa.model.Floor;
+import com.sap.ibso.hackathon.booker.jpa.model.Location;
 import com.sap.ibso.hackathon.booker.jpa.model.Manager;
 import com.sap.ibso.hackathon.booker.jpa.model.Preference;
+import com.sap.ibso.hackathon.booker.jpa.model.Seat;
 import com.sap.ibso.hackathon.booker.mapper.BookingMapper;
 import com.sap.ibso.hackathon.booker.mapper.DateMapper;
 import org.springframework.stereotype.Service;
@@ -78,6 +82,9 @@ public class UserBookingService {
                 .stream()
                 .map(bookingMapper::mapYtoZ)
                 .collect(Collectors.toSet());
+        bookingSet.forEach(bookingDto -> {
+            bookingDto.setLocationText(getLocationText(bookingDto.getSeatId()));
+        });
         Set<Preference> preferenceSet = preferenceService.findByEmployeeId(employee.getId());
         return UserBookingDto.builder()
                              .code(employee.getCode())
@@ -85,6 +92,20 @@ public class UserBookingService {
                              .preferences(preferenceSet)
                              .reservations(bookingSet)
                              .build();
+    }
+
+    private String getLocationText(UUID seatId) {
+        Seat seat = seatService
+                .findOptionalBySeatId(seatId).orElseThrow(() -> new UUIDEntityNotFoundException(Seat.class));
+        Floor floor = floorService
+                .findOptionalById(seat.getFloorId()).orElseThrow(() -> new UUIDEntityNotFoundException(Floor.class));
+        Building building = buildingService
+                .findOptionalById(floor.getBuildingId())
+                .orElseThrow(() -> new UUIDEntityNotFoundException(Building.class));
+        Location location = locationService
+                .findOptionalById(building.getLocationId())
+                .orElseThrow(() -> new UUIDEntityNotFoundException(Location.class));
+        return location.getName() + "/ " + building.getName() + "/ " + floor.getName() + "/ " + seat.getCode();
     }
 
     private Date getEndDate(Date startDate, String endDate) {
