@@ -25,8 +25,8 @@ public class LocationService extends BookerEntityService<Location> {
 	private FloorService floorService;
 	private SeatService seatService;
 
-	public LocationService(LocationRepository locationRepository, LocationService locationService,
-			BuildingService buildingService, FloorService floorService, SeatService seatService) {
+	public LocationService(LocationRepository locationRepository, BuildingService buildingService,
+			FloorService floorService, SeatService seatService) {
 		super(locationRepository);
 		this.locationRepository = locationRepository;
 		this.buildingService = buildingService;

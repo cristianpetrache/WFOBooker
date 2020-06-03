@@ -1,5 +1,6 @@
 package com.sap.ibso.hackathon.booker.dto;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,10 @@ public class SeatDto {
 	private Seat seat;
 
 	public static Set<SeatDto> seat(List<Seat> seats) {
-		return null;
+		Set<SeatDto> result = new HashSet<SeatDto>();
+		for (Seat seat : seats) {
+			result.add(SeatDto.builder().seat(seat).build());
+		}
+		return result;
 	}
 }

@@ -13,17 +13,13 @@ import com.sap.ibso.hackathon.booker.jpa.model.PageRequest;
 public class MasterDataService {
 
 	private LocationService locationService;
-	private ExecutionContextHolderService executionContextHolderService;
 
-	public MasterDataService(LocationService locationService,
-			ExecutionContextHolderService executionContextHolderService) {
+	public MasterDataService(LocationService locationService) {
 		this.locationService = locationService;
-		this.executionContextHolderService = executionContextHolderService;
+
 	}
 
 	public MasterDataDto getMasterData(PageRequest arg) {
-
-		executionContextHolderService.getExecutionContext().getLogger().info(this.getClass().getName());
 
 		Set<LocationDto> locations = new HashSet<LocationDto>();
 
