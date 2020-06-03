@@ -1,5 +1,6 @@
 package com.sap.ibso.hackathon.booker.config;
 
+import com.sap.ibso.hackathon.booker.dto.MasterDataDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingDto;
 import com.sap.ibso.hackathon.booker.dto.UserBookingRequestDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Booking;
@@ -18,6 +19,7 @@ import com.sap.ibso.hackathon.booker.service.EmployeeService;
 import com.sap.ibso.hackathon.booker.service.FloorService;
 import com.sap.ibso.hackathon.booker.service.LocationService;
 import com.sap.ibso.hackathon.booker.service.ManagerService;
+import com.sap.ibso.hackathon.booker.service.MasterDataService;
 import com.sap.ibso.hackathon.booker.service.PreferenceService;
 import com.sap.ibso.hackathon.booker.service.RestrictionService;
 import com.sap.ibso.hackathon.booker.service.SeatService;
@@ -27,6 +29,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 
@@ -43,11 +46,17 @@ public class FunctionConfig {
     private PreferenceService preferenceService;
     private ManagerService managerService;
     private UserBookingService userBookingService;
+    private MasterDataService masterDataService;
 
-    public FunctionConfig(LocationService locationService, BuildingService buildingService, SeatService seatService,
-                          FloorService floorService, BookingService bookingService, EmployeeService employeeService,
-                          RestrictionService restrictionService, PreferenceService preferenceService,
-                          ManagerService managerService, UserBookingService userBookingService) {
+    public FunctionConfig(LocationService locationService,
+                          BuildingService buildingService, SeatService seatService,
+                          FloorService floorService, BookingService bookingService,
+                          EmployeeService employeeService,
+                          RestrictionService restrictionService,
+                          PreferenceService preferenceService,
+                          ManagerService managerService,
+                          UserBookingService userBookingService,
+                          MasterDataService masterDataService) {
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.seatService = seatService;
@@ -58,6 +67,7 @@ public class FunctionConfig {
         this.preferenceService = preferenceService;
         this.managerService = managerService;
         this.userBookingService = userBookingService;
+        this.masterDataService = masterDataService;
     }
 
     @Bean
@@ -198,5 +208,10 @@ public class FunctionConfig {
     @Bean
     public Function<UserBookingRequestDto, UserBookingDto> getUserBookings() {
         return userBookingService::getUserBooking;
+    }
+
+    @Bean
+    public Function<Optional<?>, MasterDataDto> getMasterData() {
+        return optional -> masterDataService.getMasterData();
     }
 }

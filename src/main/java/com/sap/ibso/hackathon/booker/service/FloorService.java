@@ -4,7 +4,8 @@ import com.sap.ibso.hackathon.booker.jpa.model.Floor;
 import com.sap.ibso.hackathon.booker.jpa.repo.FloorRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class FloorService extends BookerEntityService<Floor> {
@@ -16,7 +17,7 @@ public class FloorService extends BookerEntityService<Floor> {
         this.floorRepository = floorRepository;
     }
 
-    public Optional<Floor> findOptionalFirstById() {
-        return floorRepository.findFirstByOrderByIdAsc();
+    public Set<Floor> findByBuildingId(UUID buildingId) {
+        return floorRepository.findByBuildingId(buildingId);
     }
 }

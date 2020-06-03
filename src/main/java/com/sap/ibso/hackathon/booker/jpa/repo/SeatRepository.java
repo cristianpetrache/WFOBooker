@@ -3,10 +3,10 @@ package com.sap.ibso.hackathon.booker.jpa.repo;
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public interface SeatRepository extends JpaRepository<Seat, UUID> {
 
-    Optional<Seat> findFirstByOrderByIdAsc();
+    Set<Seat> findByFloorId(UUID floorId);
 }
