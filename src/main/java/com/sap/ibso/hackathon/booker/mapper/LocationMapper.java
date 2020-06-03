@@ -2,9 +2,9 @@ package com.sap.ibso.hackathon.booker.mapper;
 
 import com.sap.ibso.hackathon.booker.dto.LocationDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Location;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class LocationMapper implements Mapper<Location, LocationDto> {
     @Override
     public Location mapZtoY(LocationDto locationDto) {

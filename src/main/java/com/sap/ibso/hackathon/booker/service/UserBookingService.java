@@ -74,7 +74,7 @@ public class UserBookingService {
 
     private UserBookingDto getUserBooking(Employee employee, Date startDate, Date endDate) {
         Set<BookingDto> bookingSet = bookingService
-                .getBookingsByEmployeeIdStartDateAndEndDate(employee.getId(), startDate, endDate)
+                .findByEmployeeIdAndDateBetween(employee.getId(), startDate, endDate)
                 .stream()
                 .map(bookingMapper::mapYtoZ)
                 .collect(Collectors.toSet());

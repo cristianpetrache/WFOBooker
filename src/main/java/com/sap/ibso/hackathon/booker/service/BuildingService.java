@@ -5,6 +5,7 @@ import com.sap.ibso.hackathon.booker.jpa.repo.BuildingRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,5 +23,9 @@ public class BuildingService extends BookerEntityService<Building> {
 
     public Set<Building> findByLocationId(UUID locationID) {
         return buildingRepository.findByLocationId(locationID);
+    }
+
+    public Optional<Building> findOptionalById(UUID buildingId) {
+        return buildingRepository.findById(buildingId);
     }
 }
