@@ -2,9 +2,9 @@ package com.sap.ibso.hackathon.booker.mapper;
 
 import com.sap.ibso.hackathon.booker.dto.BuildingDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Building;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class BuildingMapper implements Mapper<Building, BuildingDto> {
 
     @Override

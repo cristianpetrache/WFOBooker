@@ -2,9 +2,9 @@ package com.sap.ibso.hackathon.booker.mapper;
 
 import com.sap.ibso.hackathon.booker.dto.FloorDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Floor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class FloorMapper implements Mapper<Floor, FloorDto> {
 
     @Override

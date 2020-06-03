@@ -5,6 +5,7 @@ import com.sap.ibso.hackathon.booker.jpa.repo.BookingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,8 +19,13 @@ public class BookingService extends BookerEntityService<Booking> {
         this.bookingRepository = bookingRepository;
     }
 
-    public Set<Booking> getBookingsByEmployeeIdStartDateAndEndDate(
+    public Set<Booking> findByEmployeeIdAndDateBetween(
             UUID employeeId, Date startDate, Date endDate) {
         return bookingRepository.findByEmployeeIdAndDateBetween(employeeId, startDate, endDate);
     }
+
+    public Optional<Booking> findOptionalBySeatIdAndDate(UUID seatId, Date date) {
+        return bookingRepository.findOptionalBySeatIdAndDate(seatId, date);
+    }
+
 }

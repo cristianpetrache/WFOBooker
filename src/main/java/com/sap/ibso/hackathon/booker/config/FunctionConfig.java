@@ -24,6 +24,7 @@ import com.sap.ibso.hackathon.booker.service.PreferenceService;
 import com.sap.ibso.hackathon.booker.service.RestrictionService;
 import com.sap.ibso.hackathon.booker.service.SeatService;
 import com.sap.ibso.hackathon.booker.service.UserBookingService;
+import com.sap.ibso.hackathon.booker.validator.Validator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
@@ -47,6 +48,7 @@ public class FunctionConfig {
     private ManagerService managerService;
     private UserBookingService userBookingService;
     private MasterDataService masterDataService;
+    private Validator<Booking> bookingValidator;
 
     public FunctionConfig(LocationService locationService,
                           BuildingService buildingService, SeatService seatService,
@@ -56,7 +58,8 @@ public class FunctionConfig {
                           PreferenceService preferenceService,
                           ManagerService managerService,
                           UserBookingService userBookingService,
-                          MasterDataService masterDataService) {
+                          MasterDataService masterDataService,
+                          Validator<Booking> bookingValidator) {
         this.locationService = locationService;
         this.buildingService = buildingService;
         this.seatService = seatService;
@@ -68,6 +71,7 @@ public class FunctionConfig {
         this.managerService = managerService;
         this.userBookingService = userBookingService;
         this.masterDataService = masterDataService;
+        this.bookingValidator = bookingValidator;
     }
 
     @Bean
@@ -137,7 +141,10 @@ public class FunctionConfig {
 
     @Bean
     public Function<List<Booking>, List<Booking>> postBookings() {
-        return createBookingList -> bookingService.createAll(createBookingList);
+        return createBookingList -> {
+            bookingValidator.validate(createBookingList);
+            return bookingService.createAll(createBookingList);
+        };
     }
 
     @Bean

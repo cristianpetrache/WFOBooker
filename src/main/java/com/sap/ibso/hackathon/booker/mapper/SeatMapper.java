@@ -2,9 +2,9 @@ package com.sap.ibso.hackathon.booker.mapper;
 
 import com.sap.ibso.hackathon.booker.dto.SeatDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Seat;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class SeatMapper implements Mapper<Seat, SeatDto> {
 
     @Override

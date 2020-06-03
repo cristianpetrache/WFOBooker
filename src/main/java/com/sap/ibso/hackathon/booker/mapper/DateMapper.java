@@ -1,13 +1,13 @@
 package com.sap.ibso.hackathon.booker.mapper;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Service
+@Component
 public class DateMapper implements Mapper<Date, String> {
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

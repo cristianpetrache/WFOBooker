@@ -2,9 +2,9 @@ package com.sap.ibso.hackathon.booker.mapper;
 
 import com.sap.ibso.hackathon.booker.dto.BookingDto;
 import com.sap.ibso.hackathon.booker.jpa.model.Booking;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class BookingMapper implements Mapper<Booking, BookingDto> {
 
     private DateMapper dateMapper;
